@@ -4,10 +4,30 @@
 # y así se muestra al final el total a pagar
 
 peliculas = [
-    [1, "Favoritos", 200, 50],
-    [2, "Nuevos", 350, 100],
-    [3, "Estrenos", 500, 350],
-    [4, "Super Estrenos", 750, 400]
+    {
+        "ID": 0,
+        "categoria":"Favoritos",
+        "precio": 200,
+        "recargo": 50
+    },
+    {
+        "ID": 1,
+        "categoria":"Nuevos",
+        "precio": 350,
+        "recargo": 100
+    },
+    {
+        "ID": 2,
+        "categoria":"Estrenos",
+        "precio": 500,
+        "recargo": 350
+    },
+    {
+        "ID": 3,
+        "categoria":"Super estrenos",
+        "precio": 750,
+        "recargo": 400
+    }
 ]
 
 tienda = True
@@ -23,18 +43,18 @@ while tienda == True:
     print("Elija la pelicula deseada:\n\n \tCategoria ---------- Precio ---------- Codigo ---------- Recargo/*dia")
 
     for i in peliculas:
-        print("\t ",i[1]," ---------- ",i[2]," ---------- ",i[0]," ---------- ",i[3],"\t")
+        print("\t ",i["categoria"]," ---------- ",i["precio"]," ---------- ",i["ID"]+1," ---------- ",i["recargo"],"\t")
 
     cod_peli = int(input("\nIngrese el codigo que desee: "))
 
     if cod_peli >= 1 and cod_peli <=4:
         for i in peliculas:
-            if cod_peli == i[0]:
+            if cod_peli == i["ID"]+1:
                 recargo = int(input("Introduzca el numero de dias de recargo: "))
                 peli_recargo.append(recargo)
-                precio_total += i[2]* recargo
+                precio_total += i["precio"]* recargo
                 contador += 1
-                peli_comprada.append(i[1])
+                peli_comprada.append(i["categoria"])
 
                 compra = input("Desea seguir comprando? \n 'si' si desea seguir comprando\n 'no' si desea terminar su compra: ")
 
@@ -42,7 +62,7 @@ while tienda == True:
                     print("\n Su compra ha terminado \n ")
 
                     for i in range(contador):
-                        print(peli_comprada[i]," con ",peli_recargo[i]," dias recargo ")
+                        print("elijio ",peli_comprada[i]," con ",peli_recargo[i]," dias recargo ")
 
                     print("El total a pagar es de $",precio_total,"\n")
                     tienda = False
