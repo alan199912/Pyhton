@@ -5,16 +5,56 @@
 # y cuando el usuario desee terminar el cálculo de la factura completa con todas sus compras.
 
 productos = [
-    [1,"Camisa", 700],
-    [2,"Cinturon", 200],
-    [3,"Zapatos", 1500],
-    [4,"Pantalon", 2000],
-    [5,"Calcetines", 200],
-    [6,"Faldas", 800],
-    [7,"Gorras", 500],
-    [8,"Sueter", 1700],
-    [9,"Corbata", 900],
-    [10,"Chaqueta", 7000]
+    {
+        "ID": 0,
+        "producto": "Camisa",
+        "precio": 700
+    },
+    {
+        "ID": 1,
+        "producto": "Cinturon",
+        "precio": 200
+    },
+    {
+        "ID": 2,
+        "producto": "Zapatos",
+        "precio": 1500
+    },
+    {
+        "ID": 3,
+        "producto": "Pantalon",
+        "precio": 2000
+    },
+    {
+        "ID": 4,
+        "producto": "Calcetines",
+        "precio": 200
+    },
+    {
+        "ID": 5,
+        "producto": "Faldas",
+        "precio": 800
+    },
+    {
+        "ID": 6,
+        "producto": "Gorras",
+        "precio": 500
+    },
+    {
+        "ID": 7,
+        "producto": "Sweater",
+        "precio": 1700
+    },
+    {
+        "ID": 8,
+        "producto": "Corbata",
+        "precio": 900
+    },
+    {
+        "ID": 9,
+        "producto": "Chaqueta",
+        "precio": 7000
+    }
 ]
 
 precio_total = 0
@@ -30,19 +70,19 @@ while tienda == True:
     print("Elija el producto deseado:\n\n \tProducto ------------- Codigo")
 
     for i in productos:
-        print("\t",i[1]," ------------- ",i[0])
+        print("\t",i["producto"]," ------------- ",i["ID"]+1)
 
     codigo_prod = int(input("\nIntroduzca el codigo del producto: "))
 
     if codigo_prod >= 1 and codigo_prod <= 10:
         for i in productos:
-            if codigo_prod == i[0]:
-                print("\nEl precio del producto ",i[1]," es: $",i[2],"\n")
+            if codigo_prod == i["ID"]+1:
+                print("\nEl precio del producto ",i["producto"]," es: $",i["precio"],"\n")
                 unidades = int(input("Introduzca número de unidades deseadas: "))
                 unidades_compra.append(unidades)
-                precio_total += i[2]*unidades
+                precio_total += i["precio"]*unidades
                 contador += 1
-                prod_comprado.append(i[1])
+                prod_comprado.append(i["producto"])
 
                 compra = input("Desea seguir comprando? \n 'si' si desea seguir comprando\n 'no' si desea terminar su compra: ")
 
@@ -62,3 +102,4 @@ while tienda == True:
     else:
         print("Producto invalido")
         tienda = False
+
